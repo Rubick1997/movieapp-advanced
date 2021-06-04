@@ -1,0 +1,17 @@
+.App {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg, #0d253f, #01b4e4, #90cea1);
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  color: white;
+  padding-top: 130px;
+  padding-bottom: 70px;
+}
+
+@media (max-width: 700px) {
+  .app {
+    padding-top: 70px;
+  }
+}
