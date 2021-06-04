@@ -11,6 +11,7 @@ const useStyles = makeStyles({
     bottom: 0,
     backgroundColor: "#90cea1",
     zIndex: 100,
+    fontSize:"1000px"
   },
 });
 
@@ -57,11 +58,12 @@ const MainNav = () => {
     <BottomNavigation
       value={value}
       onChange={handleChange}
+      showLabels
       className={classes.root}
     >
       {itemsList.map((item) => {
         const { text, icon } = item;
-        return <BottomNavigationAction label={text} icon={icon} key={text} />;
+        return <BottomNavigationAction style={{ color: "white" }} label={text} icon={icon} key={text} />;
       })}
     </BottomNavigation>
   );
