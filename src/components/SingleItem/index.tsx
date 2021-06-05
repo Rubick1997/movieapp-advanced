@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import { img_300, unavailable } from "../../config/config";
 import { fullDate } from "../../helpers/functions";
+import { Badge } from "@material-ui/core";
 
 type ItemType = {
   id: number;
@@ -22,6 +23,10 @@ const SingleItem = ({
 }: ItemType) => {
   return (
     <div className={styles.media}>
+      <Badge
+        badgeContent={vote_average}
+        color={vote_average > 6 ? "primary" : "secondary"}
+      />
       <img
         className={styles.poster}
         src={poster ? `${img_300}/${poster}` : unavailable}

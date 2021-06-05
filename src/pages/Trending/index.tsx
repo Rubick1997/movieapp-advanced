@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import SingleItem from "../../components/SingleItem";
 import { Grid } from "@material-ui/core";
+import PaginationComponent from "../../components/PaginationComponent";
 
 type ContentType = {
   id: number;
@@ -16,11 +17,13 @@ type ContentType = {
 };
 
 const Trending = () => {
+  const [page, setPage] = useState<any>(1);
+
   const [content, setContent] = useState<ContentType[]>([]);
 
   const fetchTrending = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
     );
     console.log(data.results);
     setContent(data.results);
@@ -32,7 +35,7 @@ const Trending = () => {
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [page]);
 
   return (
     <div>
@@ -53,6 +56,7 @@ const Trending = () => {
             </Grid>
           ))}
       </Grid>
+      <PaginationComponent setPage={setPage} page ={page}/>
     </div>
   );
 };
