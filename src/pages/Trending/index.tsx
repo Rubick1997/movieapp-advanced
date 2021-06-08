@@ -56,7 +56,7 @@ const Trending = () => {
             </Grid>
           ))}
       </Grid>
-      <PaginationComponent setPage={setPage} page ={page}/>
+      <PaginationComponent setPage={setPage} page ={page} />
     </div>
   );
 };

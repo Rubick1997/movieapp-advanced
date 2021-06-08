@@ -29,7 +29,7 @@ const PaginationComponent: FunctionComponent<{
       }}
     >
       <ThemeProvider theme={theme}>
-      <Pagination count={10} page={page} onChange={handleChange} />
+      <Pagination count={10} page={page} onChange={handleChange} color="primary"/>
       </ThemeProvider>
     </div>
   );
