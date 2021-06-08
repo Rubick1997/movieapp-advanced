@@ -29,7 +29,7 @@ const SingleItem = ({
       />
       <img
         className={styles.poster}
-        src={poster ? `${img_300}/${poster}` : unavailable}
+        src={poster ? `${img_300}${poster}` : unavailable}
         alt={`${title} poster`}
       />
       <b className={styles.title}>{title}</b>

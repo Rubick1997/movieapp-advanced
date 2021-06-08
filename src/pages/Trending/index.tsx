@@ -4,21 +4,10 @@ import styles from "./styles.module.css";
 import SingleItem from "../../components/SingleItem";
 import { Grid } from "@material-ui/core";
 import PaginationComponent from "../../components/PaginationComponent";
-
-type ContentType = {
-  id: number;
-  media_type: string;
-  poster_path: string;
-  release_date: string;
-  first_air_date: string;
-  title: string;
-  name: string;
-  vote_average: number;
-};
+import {ContentType} from "../../types"
 
 const Trending = () => {
-  const [page, setPage] = useState<any>(1);
-
+  const [page, setPage] = useState<number>(1);
   const [content, setContent] = useState<ContentType[]>([]);
 
   const fetchTrending = async () => {
@@ -35,6 +24,7 @@ const Trending = () => {
     } catch (error) {
       console.log(error.message);
     }
+    // eslint-disable-next-line
   }, [page]);
 
   return (
