@@ -7,17 +7,19 @@ import SingleItem from "../../components/SingleItem";
 import { GenresType } from "../../types";
 import Genres from "../../components/Genre";
 import styles from "./styles.module.css";
+import useGenres from "../../hooks/useGenres";
 
 const Movies = () => {
   const [movies, setMovies] = useState<ContentType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [numofPages, setNumofPages] = useState<number>(0);
-  const [selectedGenres, setSelectedGenres] = useState([] as string[]);
-  const [genres, setGenres] = useState([] as GenresType);
+  const [selectedGenres, setSelectedGenres] = useState<GenresType[]>([]);
+  const [genres, setGenres] = useState<GenresType[]>([]);
+  const genreforURL = useGenres(selectedGenres);
 
   const fetchMovies = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`
     );
 
     setMovies(data.results);
@@ -31,7 +33,7 @@ const Movies = () => {
       console.log(error.message);
     }
     // eslint-disable-next-line
-  }, [page]);
+  }, [page,genreforURL]);
 
   return (
     <div>
