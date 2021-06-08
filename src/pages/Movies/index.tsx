@@ -6,8 +6,9 @@ import PaginationComponent from "../../components/PaginationComponent";
 import SingleItem from "../../components/SingleItem";
 import { GenresType } from "../../types";
 import Genres from "../../components/Genre";
-import styles from "./styles.module.css";
 import useGenres from "../../hooks/useGenres";
+import styles from "./styles.module.css";
+
 
 const Movies = () => {
   const [movies, setMovies] = useState<ContentType[]>([]);
