@@ -1,3 +1,8 @@
-.pageTitle{
-
+.field {
+  display: flex;
+  margin: 15px, 0;
+}
+.tab {
+  display: flex;
+  padding-bottom: 5px;
 }
