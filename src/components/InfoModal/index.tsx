@@ -144,13 +144,11 @@ export default function InfoModal({ children, media_type, id }: any) {
                   {trailer && <YouTube videoId={trailer} />}{" "}
                   <Button
                     variant="contained"
-                    startIcon={
-                      !trailer ? <YouTubeIcon /> : <DescriptionIcon />
-                    }
+                    startIcon={!trailer ? <YouTubeIcon /> : <DescriptionIcon />}
                     color={!trailer ? "secondary" : "primary"}
                     onClick={fetchTrailer}
                   >
-                    {trailer ? "Watch the Trailer" : "Read the description"}
+                    {!trailer ? "Watch the Trailer" : "Read the description"}
                   </Button>
                   <Carousel media_type={media_type} id={id} />
                 </div>
