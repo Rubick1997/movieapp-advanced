@@ -7,7 +7,6 @@ import SingleItem from "../../components/SingleItem";
 import { GenresType } from "../../types";
 import Genres from "../../components/Genre";
 import useGenres from "../../hooks/useGenres";
-import styles from "./styles.module.css";
 
 
 const Movies = () => {

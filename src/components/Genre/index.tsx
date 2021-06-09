@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { GenresType } from "../../types";
 import { Theaters } from "@material-ui/icons";
-import { isTemplateExpression } from "typescript";
 
 type GenresList = {
   type: string;

@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import { img_300, unavailable } from "../../config/config";
 import { fullDate } from "../../helpers/functions";
 import { Badge } from "@material-ui/core";
+import InfoModal from "../InfoModal";
 
 type ItemType = {
   id: number;
@@ -22,7 +23,7 @@ const SingleItem = ({
   vote_average,
 }: ItemType) => {
   return (
-    <div className={styles.media}>
+    <InfoModal id={id} media_type={media_type}>
       <Badge
         badgeContent={vote_average}
         color={vote_average > 6 ? "primary" : "secondary"}
@@ -37,7 +38,7 @@ const SingleItem = ({
         {media_type === "tv" ? "TV Series" : "Movie"}
         <span className={styles.subTitle}>{fullDate(date)}</span>
       </span>
-    </div>
+    </InfoModal>
   );
 };
 
