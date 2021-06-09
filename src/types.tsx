@@ -23,3 +23,13 @@ export type ItemType = {
 }
 
 export type GenresType = { id: number; name: string };
+
+export type CarouselType = {
+  media_type: string;
+  id: number;
+};
+
+export type CreditType = {
+  profile_path:string;
+  name:string
+}

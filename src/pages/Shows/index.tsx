@@ -7,7 +7,6 @@ import SingleItem from "../../components/SingleItem";
 import { GenresType } from "../../types";
 import useGenres from "../../hooks/useGenres";
 import Genres from "../../components/Genre";
-import styles from "./styles.module.css";
 
 const Shows = () => {
   const [shows, setShows] = useState<ContentType[]>([]);

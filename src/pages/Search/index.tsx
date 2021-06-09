@@ -50,7 +50,7 @@ const Search = () => {
     window.scroll(0, 0);
     fetchResults();
     // eslint-disable-next-line
-  }, [type, page]);
+  }, [type, page,searchText]);
 
   return (
     <div>
@@ -102,7 +102,7 @@ const Search = () => {
             </Grid>
           ))}
         {searchText &&
-          !searchRes &&
+          !searchRes.length &&
           (type ? <h2>No Shows Found</h2> : <h2>No Movies Found</h2>)}
       </Grid>
       {numofPages > 1 && (

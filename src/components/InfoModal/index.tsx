@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import DescriptionIcon from "@material-ui/icons/Description";
 import {
   img_500,
   unavailable,
@@ -13,10 +14,8 @@ import Fade from "@material-ui/core/Fade";
 import styles from "./styles.module.css";
 import axios from "axios";
 import { ItemType } from "../../types";
-
+import Carousel from "./Carousel";
 import YouTube from "react-youtube";
-
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,6 +61,7 @@ export default function InfoModal({ children, media_type, id }: any) {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, []);
 
   const fetchTrailer = async () => {
@@ -71,13 +71,12 @@ export default function InfoModal({ children, media_type, id }: any) {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
       );
-
       setTrailer(data.results[0]?.key);
     }
   };
 
   return (
-    <div>
+    <>
       <div
         color="inherit"
         style={{ cursor: "pointer" }}
@@ -111,47 +110,55 @@ export default function InfoModal({ children, media_type, id }: any) {
                   alt={content.name || content.title}
                   className={styles.contentPortrait}
                 />
-                <img
-                  src={
-                    content.backdrop_path
-                      ? `${img_500}/${content.backdrop_path}`
-                      : unavailableLandscape
-                  }
-                  alt={content.name || content.title}
-                  className={styles.contentLandScape}
-                />
+                {!trailer && (
+                  <img
+                    src={
+                      content.backdrop_path
+                        ? `${img_500}/${content.backdrop_path}`
+                        : unavailableLandscape
+                    }
+                    alt={content.name || content.title}
+                    className={styles.contentLandScape}
+                  />
+                )}
                 <div className={styles.contentAbout}>
-                  <span className={styles.contentTitle}>
-                    {content.name || content.title} (
-                    {(
-                      content.first_air_date ||
-                      content.release_date ||
-                      "-----"
-                    ).substring(0, 4)}
-                    )
-                  </span>
+                  {!trailer && (
+                    <span className={styles.contentTitle}>
+                      {content.name || content.title} (
+                      {(
+                        content.first_air_date ||
+                        content.release_date ||
+                        "-----"
+                      ).substring(0, 4)}
+                      )
+                    </span>
+                  )}
                   {content.tagline && (
                     <i className="tagline">{content.tagline}</i>
                   )}
-                  <span className={styles.contentDescription}>
-                    {content.overview}
-                  </span>{" "}
-                  {trailer && <YouTube videoId={trailer}/>}
+                  {!trailer && (
+                    <span className={styles.contentDescription}>
+                      {content.overview}
+                    </span>
+                  )}
+                  {trailer && <YouTube videoId={trailer} />}{" "}
                   <Button
                     variant="contained"
-                    startIcon={<YouTubeIcon />}
-                    color="secondary"
+                    startIcon={
+                      !trailer ? <YouTubeIcon /> : <DescriptionIcon />
+                    }
+                    color={!trailer ? "secondary" : "primary"}
                     onClick={fetchTrailer}
-                    style={{marginTop:"auto"}}
                   >
-                    Watch the Trailer
+                    {trailer ? "Watch the Trailer" : "Read the description"}
                   </Button>
+                  <Carousel media_type={media_type} id={id} />
                 </div>
               </div>
             </div>
           )}
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

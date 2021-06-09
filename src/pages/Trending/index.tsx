@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import styles from "./styles.module.css";
 import SingleItem from "../../components/SingleItem";
 import { Grid } from "@material-ui/core";
 import PaginationComponent from "../../components/PaginationComponent";

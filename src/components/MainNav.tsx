@@ -63,7 +63,7 @@ const MainNav = () => {
     >
       {itemsList.map((item) => {
         const { text, icon } = item;
-        return <BottomNavigationAction style={{ color: "white" }} label={text} icon={icon} key={text} />;
+        return <BottomNavigationAction style={{ color: "black" }} label={text} icon={icon} key={text} />;
       })}
     </BottomNavigation>
   );
