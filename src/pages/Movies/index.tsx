@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Grid } from "@material-ui/core";
 import { ContentType } from "../../types";
@@ -7,7 +7,6 @@ import SingleItem from "../../components/SingleItem";
 import { GenresType } from "../../types";
 import Genres from "../../components/Genre";
 import useGenres from "../../hooks/useGenres";
-
 
 const Movies = () => {
   const [movies, setMovies] = useState<ContentType[]>([]);
@@ -18,12 +17,14 @@ const Movies = () => {
   const genreforURL = useGenres(selectedGenres);
 
   const fetchMovies = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`
-    );
-
-    setMovies(data.results);
-    setNumofPages(data.total_pages);
+    axios
+      .get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`
+      )
+      .then((response) => {
+        setMovies(response.data.results)
+        setNumofPages(response.data.total_pages)
+      });
   };
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const Movies = () => {
       console.log(error.message);
     }
     // eslint-disable-next-line
-  }, [page,genreforURL]);
+  }, [page, genreforURL]);
 
   return (
     <div>
@@ -49,9 +50,8 @@ const Movies = () => {
       <Grid container spacing={2} justify="center">
         {movies &&
           movies.map((item) => (
-            <Grid item>
+            <Grid item key={item.id}>
               <SingleItem
-                key={item.id}
                 id={item.id}
                 poster={item.poster_path}
                 title={item.title || item.name}

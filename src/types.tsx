@@ -1,3 +1,11 @@
+export type GenresList = {
+  type: string;
+  selectedGenres: GenresType[];
+  genres: GenresType[];
+  setGenres: React.Dispatch<React.SetStateAction<GenresType[]>>;
+  setSelectedGenres: React.Dispatch<React.SetStateAction<GenresType[]>>;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+};
 
 
 export type ContentType = {

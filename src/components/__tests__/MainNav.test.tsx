@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 
-test("routes are changing when the bottom nav buttons clicked", () => {
+test("routes are changing when the bottom nav buttons clicked", async() => {
   const history = createMemoryHistory();
   render(
     <Router history={history}>

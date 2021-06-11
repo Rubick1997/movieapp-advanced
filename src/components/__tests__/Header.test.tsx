@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 
-test("check if the header exists", () => {
+test("check if the header exists", async() => {
   render(<Header />);
   const headerText = screen.getByText(/Entertainment database/i);
   expect(headerText).toHaveTextContent("Entertainment database");

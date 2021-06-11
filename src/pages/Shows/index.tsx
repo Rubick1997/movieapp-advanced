@@ -47,9 +47,8 @@ const Shows = () => {
       <Grid container spacing={2} justify="center">
         {shows &&
           shows.map((item) => (
-            <Grid item>
+            <Grid item key={item.id}>
               <SingleItem
-                key={item.id}
                 id={item.id}
                 poster={item.poster_path}
                 title={item.title || item.name}

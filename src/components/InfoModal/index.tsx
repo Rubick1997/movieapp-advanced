@@ -56,6 +56,8 @@ export default function InfoModal({ children, media_type, id }: any) {
       `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     setContent(data);
+    console.log(data)
+    console.log(data)
   };
 
   useEffect(() => {
