@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import SingleItem from "../../components/SingleItem";
 import { Grid } from "@material-ui/core";
 import PaginationComponent from "../../components/PaginationComponent";
-import {ContentType} from "../../types"
+import { ContentType } from "../../types";
 
 const Trending = () => {
   const [page, setPage] = useState<number>(1);
@@ -32,9 +32,8 @@ const Trending = () => {
       <Grid container spacing={2} justify="center">
         {content &&
           content.map((item) => (
-            <Grid item>
+            <Grid item key={item.id}>
               <SingleItem
-                key={item.id}
                 id={item.id}
                 poster={item.poster_path}
                 title={item.title || item.name}
@@ -45,7 +44,7 @@ const Trending = () => {
             </Grid>
           ))}
       </Grid>
-      <PaginationComponent setPage={setPage} page ={page} />
+      <PaginationComponent setPage={setPage} page={page} />
     </div>
   );
 };

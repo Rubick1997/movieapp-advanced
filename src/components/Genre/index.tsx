@@ -34,7 +34,11 @@ function Genres({
   };
 
   useEffect(() => {
-    fetchGenres();
+    try {
+      fetchGenres();
+    } catch (error) {
+      console.log(error.message);
+    }
     return () => {
       setGenres([]);
     };

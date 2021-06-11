@@ -1,10 +1,9 @@
-import { act, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Movies from "./index";
 
 test("everything renders", async () => {
-   act(() => {
-     render(<Movies />);
-   }) 
-  const cruellaCard = await screen.findByText("Cruella");
-  expect(cruellaCard).toBeInTheDocument();
+  render(<Movies />);
+  const button = await screen.findByText("Cruella")
+  expect(button).toBeInTheDocument();
 });
