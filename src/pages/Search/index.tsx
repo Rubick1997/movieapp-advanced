@@ -47,10 +47,9 @@ const Search = () => {
   };
 
   useEffect(() => {
-    window.scroll(0, 0);
     fetchResults();
     // eslint-disable-next-line
-  }, [type, page,searchText]);
+  }, [type, page, searchText]);
 
   return (
     <div>
@@ -68,7 +67,7 @@ const Search = () => {
             style={{ marginLeft: 10 }}
             onClick={fetchResults}
           >
-            <SearchIcon fontSize="large"/>
+            <SearchIcon fontSize="large" />
           </Button>
         </div>
         <Tabs
@@ -89,9 +88,8 @@ const Search = () => {
       <Grid container spacing={2} justify="center">
         {searchRes &&
           searchRes.map((item) => (
-            <Grid item>
+            <Grid item key={item.id}>
               <SingleItem
-                key={item.id}
                 id={item.id}
                 poster={item.poster_path}
                 title={item.title || item.name}

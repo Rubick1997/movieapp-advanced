@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import MainNav from "../MainNav";
+import MainNav from "./MainNav";
 import userEvent from "@testing-library/user-event";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";

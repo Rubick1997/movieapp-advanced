@@ -18,7 +18,7 @@ const Carousel = ({ media_type, id }: CarouselType) => {
       `https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     setCredits(data.cast);
-
+    console.log(data.cast[1])
   };
 
   const items = credits?.map((item) => (
@@ -56,7 +56,6 @@ const Carousel = ({ media_type, id }: CarouselType) => {
 
   return (
     <AliceCarousel
-      
       disableDotsControls
       mouseTracking
       items={items}
